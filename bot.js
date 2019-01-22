@@ -29,14 +29,16 @@ const credentials = require('./credentials');
 
   await page.evaluate(() => document.querySelector('[href="/accounts/activity/"]').click())
 
+  await page.waitFor(() => document.querySelectorAll('[role=button] .L3NKy').length)
+
   await page.evaluate(() => {
     const elements = document.querySelectorAll('[role=button] .L3NKy')
 
-    elements.forEach(element) =>{
-      if(element.innerText === 'Follow'){
-        element.click()
-      }
-    }
+      elements.forEach(element =>{
+        if(element.innerText === 'Follow'){
+          element.click()
+        }
+      })
   })
 
 
